@@ -1,24 +1,10 @@
 const root = document.documentElement;
 const loader = document.querySelector(".loader");
-const counter = document.querySelector(".loader__count");
 const particleField = document.querySelector(".scene__particles");
-const soundButton = document.querySelector(".sound");
-const soundLabel = soundButton.querySelector(".sound__label");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-let loadProgress = 0;
-const countUp = window.setInterval(() => {
-  loadProgress += Math.ceil((100 - loadProgress) * 0.18);
-  if (loadProgress >= 99) {
-    loadProgress = 100;
-    window.clearInterval(countUp);
-  }
-  counter.textContent = String(loadProgress).padStart(2, "0");
-}, 70);
 
 window.addEventListener("load", () => {
   window.setTimeout(() => {
-    counter.textContent = "100";
     loader.classList.add("is-hidden");
   }, 650);
 });
@@ -58,10 +44,3 @@ if (!reduceMotion) {
 
   updateParallax();
 }
-
-soundButton.addEventListener("click", () => {
-  const isActive = soundButton.getAttribute("aria-pressed") === "true";
-  soundButton.setAttribute("aria-pressed", String(!isActive));
-  soundLabel.textContent = isActive ? "Motion off" : "Motion on";
-  document.body.classList.toggle("motion-paused", isActive);
-});

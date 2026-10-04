@@ -24,7 +24,6 @@
   <body>
     <div class="loader" aria-hidden="true">
       <span class="loader__line"></span>
-      <span class="loader__count">00</span>
     </div>
 
     <main class="hero" id="home">
@@ -34,77 +33,14 @@
         <div class="scene__glow scene__glow--one"></div>
         <div class="scene__glow scene__glow--two"></div>
         <div class="scene__mist"></div>
+        <div class="scene__flicker"></div>
+        <div class="scene__signal"></div>
         <div class="scene__particles"></div>
         <div class="scene__grain"></div>
         <div class="scene__vignette"></div>
         <div class="scene__cursor-light"></div>
       </div>
-
-      <header class="nav">
-        <a class="brand reveal" href="#home" aria-label="Otabek, home">
-          <span class="brand__mark">O</span>
-          <span class="brand__name">Otabek<br />Alimov</span>
-        </a>
-
-        <nav class="nav__links reveal" aria-label="Main navigation">
-          <a href="#work"><span>01</span> Work</a>
-          <a href="#about"><span>02</span> About</a>
-          <a href="mailto:hello@otabek.dev"><span>03</span> Contact</a>
-        </nav>
-
-        <button class="sound reveal" type="button" aria-label="Toggle scene motion" aria-pressed="true">
-          <span class="sound__bars" aria-hidden="true">
-            <i></i><i></i><i></i><i></i>
-          </span>
-          <span class="sound__label">Motion on</span>
-        </button>
-      </header>
-
-      <div class="hero__eyebrow reveal">
-        <span>Independent creative developer</span>
-        <span>Available worldwide</span>
-      </div>
-
-      <section class="hero__content">
-        <p class="hero__location reveal">Tashkent <span>41.2995° N, 69.2401° E</span></p>
-        <h1 aria-label="Ideas made visible">
-          <span class="title-line title-line--top">Ideas made</span>
-          <span class="title-line title-line--bottom">visible<span class="title-dot">.</span></span>
-        </h1>
-        <div class="hero__intro reveal">
-          <p>
-            I build digital experiences where strategy, design, and code move as one.
-          </p>
-          <a class="round-link" href="#work" aria-label="Explore selected work">
-            <span>Explore<br />work</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5 12h13M13 6l6 6-6 6" />
-            </svg>
-          </a>
-        </div>
-      </section>
-
-      <div class="hero__index reveal" aria-hidden="true">
-        <span>Portfolio / 2026</span>
-        <span class="hero__index-line"></span>
-        <span>001</span>
-      </div>
-
-      <div class="scroll-cue reveal" aria-hidden="true">
-        <span>Scroll to discover</span>
-        <i></i>
-      </div>
     </main>
-
-    <section class="after-hero" id="work" aria-label="Selected work preview">
-      <p>Selected work</p>
-      <h2>Crafted with intent.<br />Built to be felt.</h2>
-      <div class="after-hero__meta" id="about">
-        <span>Digital direction</span>
-        <span>Creative development</span>
-        <span>Interaction design</span>
-      </div>
-    </section>
 
     <script type="module" src="./script.js"></script>
   </body>
