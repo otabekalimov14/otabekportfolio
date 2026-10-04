@@ -103,13 +103,34 @@ button {
 }
 
 .scene__echo {
-  animation: hologram-pulse 8s ease-in-out infinite;
+  animation: hologram-pulse 6.5s steps(1, end) infinite;
   background-position: left center;
   clip-path: polygon(0 0, 47% 0, 58% 100%, 0 100%);
-  filter: blur(3px) saturate(1.5);
+  filter: blur(1.5px) saturate(1.85) contrast(1.12);
+  isolation: isolate;
   mix-blend-mode: screen;
-  opacity: 0.06;
+  opacity: 0.13;
   transform: scale(1.045) translate(calc(var(--mx) * -11px), calc(var(--my) * -7px));
+}
+
+.scene__echo::before,
+.scene__echo::after {
+  background: inherit;
+  content: "";
+  inset: 0;
+  mix-blend-mode: screen;
+  opacity: 0;
+  position: absolute;
+}
+
+.scene__echo::before {
+  animation: channel-shift-magenta 6.5s steps(1, end) infinite;
+  filter: sepia(1) saturate(4) hue-rotate(278deg);
+}
+
+.scene__echo::after {
+  animation: channel-shift-cyan 6.5s steps(1, end) infinite;
+  filter: sepia(1) saturate(5) hue-rotate(135deg);
 }
 
 .scene__glow {
@@ -146,28 +167,36 @@ button {
   inset: -20%;
   mix-blend-mode: screen;
   opacity: 0.8;
+  position: absolute;
 }
 
 .scene__flicker {
   animation: projection-flicker 7s steps(1, end) infinite;
   background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.035) 0,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
     linear-gradient(
       180deg,
       transparent 0%,
       transparent 18%,
-      rgba(255, 126, 221, 0.1) 18.3%,
+      rgba(255, 126, 221, 0.18) 18.3%,
       transparent 19%,
       transparent 53%,
-      rgba(105, 195, 255, 0.08) 53.2%,
+      rgba(105, 195, 255, 0.14) 53.2%,
       transparent 54%,
       transparent 78%,
-      rgba(255, 94, 194, 0.08) 78.4%,
+      rgba(255, 94, 194, 0.16) 78.4%,
       transparent 79%
     );
   clip-path: polygon(0 0, 45% 0, 58% 100%, 0 100%);
   inset: 0;
   mix-blend-mode: screen;
-  opacity: 0.22;
+  opacity: 0.34;
   position: absolute;
 }
 
@@ -184,7 +213,8 @@ button {
   clip-path: polygon(0 0, 45% 0, 58% 100%, 0 100%);
   inset: -25% 0;
   mix-blend-mode: screen;
-  opacity: 0.38;
+  filter: blur(0.5px);
+  opacity: 0.55;
   position: absolute;
   transform: translateY(-45%);
 }
@@ -584,10 +614,25 @@ h1 {
 }
 
 @keyframes hologram-pulse {
-  0%, 100% { opacity: 0.025; transform: scale(1.045) translateX(0); }
-  48% { opacity: 0.08; }
-  50% { opacity: 0.16; transform: scale(1.045) translateX(3px); }
-  52% { opacity: 0.045; transform: scale(1.045) translateX(-2px); }
+  0%, 20%, 22%, 48%, 52%, 78%, 81%, 100% { opacity: 0.08; transform: scale(1.045) translateX(0); }
+  21% { opacity: 0.24; transform: scale(1.045) translateX(2px); }
+  49% { opacity: 0.18; transform: scale(1.045) translateX(-3px); }
+  50% { opacity: 0.3; transform: scale(1.045) translateX(4px); }
+  51% { opacity: 0.1; transform: scale(1.045) translateX(-1px); }
+  79% { opacity: 0.2; transform: scale(1.045) translateX(2px); }
+  80% { opacity: 0.05; transform: scale(1.045) translateX(-2px); }
+}
+
+@keyframes channel-shift-magenta {
+  0%, 20%, 22%, 48%, 52%, 78%, 81%, 100% { opacity: 0; transform: translateX(0); }
+  21%, 49%, 79% { opacity: 0.34; transform: translateX(-5px); }
+  50% { opacity: 0.5; transform: translateX(-8px); }
+}
+
+@keyframes channel-shift-cyan {
+  0%, 20%, 22%, 48%, 52%, 78%, 81%, 100% { opacity: 0; transform: translateX(0); }
+  21%, 49%, 79% { opacity: 0.26; transform: translateX(5px); }
+  50% { opacity: 0.45; transform: translateX(9px); }
 }
 
 @keyframes glow-drift-one {
