@@ -191,6 +191,13 @@ button {
   position: absolute;
 }
 
+.motion-paused .scene *,
+.motion-paused .particle,
+.motion-paused .scroll-cue i::after,
+.motion-paused .sound__bars i {
+  animation-play-state: paused !important;
+}
+
 .nav {
   align-items: flex-start;
   display: flex;

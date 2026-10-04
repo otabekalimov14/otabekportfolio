@@ -62,5 +62,6 @@ if (!reduceMotion) {
 soundButton.addEventListener("click", () => {
   const isActive = soundButton.getAttribute("aria-pressed") === "true";
   soundButton.setAttribute("aria-pressed", String(!isActive));
-  soundLabel.textContent = isActive ? "Sound off" : "Sound on";
+  soundLabel.textContent = isActive ? "Motion off" : "Motion on";
+  document.body.classList.toggle("motion-paused", isActive);
 });
